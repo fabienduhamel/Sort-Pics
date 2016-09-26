@@ -66,7 +66,7 @@ done < <(find . -maxdepth 1 -type f | grep -viE "\.(jpg|png|dng)$")
 # Rsync dirs to out/
 while read dir; do
     rsync -aR "$dir" "$OUT_DIR"
-    display "${GREEN}$dir${NC} copied to $OUT_DIR/$dir"
+    display "${GREEN}$dir${NC} copied to ${GREEN}$OUT_DIR/$dir"
 done < <(ls -d */ | grep -vE "^out/$")
 
 # Compress files to export dir
