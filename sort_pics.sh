@@ -80,6 +80,10 @@ else
     display "${GREEN}$EXPORT_DIR${NC} created"
 fi
 
+# Update file date to match exif shot date
+display "${GREEN}Updating file dates to match exif dates"
+exiftool -r '-DateTimeOriginal>FileModifyDate' .
+
 while read file; do
     FILE_SIZE=`stat --printf="%s" $file`
     FILE_WIDTH=`exiftool $file | grep "Exif Image Width" | cut -d':' -f2 | cut -d' ' -f2`
